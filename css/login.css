@@ -58,7 +58,7 @@ a {
 .navbar a {
   transition: all 0.2s;
 }
-.navbar .select{
+.navbar .select {
   background-color: #e60a15;
   padding: 5px 10px;
   border-radius: 5px;
@@ -73,60 +73,107 @@ a {
 
 /* Main */
 
-.login-card{
-    width: 500px;
-    margin: 100px auto;
-    background-color: #181111;
-    border: 1px solid #3a2728;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+.login-card {
+  width: 500px;
+  margin: 100px auto;
+  background-color: #181111;
+  border: 1px solid #3a2728;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
-.login-card img{
-    height: 150px;
-    width: 125%;
-    object-fit: cover;
-    object-position: 0 -150px;
+.login-card img {
+  height: 150px;
+  width: 125%;
+  object-fit: cover;
+  object-position: 0 -150px;
 }
-.gradient{
-    position: absolute;
-    top: 100px;
-    background: linear-gradient(to bottom, #181111d0, #181111, #181111);
-    width: 100%;
-    height: 50px;
+.gradient {
+  position: absolute;
+  top: 100px;
+  background: linear-gradient(to bottom, #181111d0, #181111, #181111);
+  width: 100%;
+  height: 50px;
 }
-.login-form{
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.login-form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.login-card h1{
-    text-align: center;
+.login-card h1 {
+  text-align: center;
 }
-input{
-    width: 100%;
-    padding: 10px;
-    background: #271B1B;
-    border: 1px solid #553A3B;
-    border-radius: 10px;
-    margin-top: 10px;
-    outline: none;
-    transition: all 0.2s;
-    color: white;
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  background: #271b1b;
+  border: 1px solid #553a3b;
+  border-radius: 10px;
+  margin-top: 10px;
+  outline: none;
+  transition: all 0.2s;
+  color: white;
 }
 input::placeholder {
-  color: #BB9B9C;
+  color: #bb9b9c;
 }
 input:focus {
   border: 1px solid #e60a15;
 }
-.option-login{
+.option-login {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.remember-login{
+.remember-login {
   display: flex;
   align-items: center;
-  width: 300px;
+  gap: 8px;
+}
+input[type="checkbox"] {
+  appearance: none;
+
+  width: 18px;
+  height: 18px;
+  border: 1px solid #553a3b;
+  background-color: #181111;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #271b1b;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  display: flex;
+  margin: -2px 2px;
+}
+
+.forgot-login a {
+  color: #bb9b9c;
+}
+
+button{
+  background-color: #e60a15;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px #e60a1555;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.login-form p{
+  text-align: center;
+}
+.login-form a{
+  color: #e60a15;
+  font-weight: bold;
 }
