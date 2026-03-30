@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(../image/image1.png);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+a {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #230f1180, #230f11cc);
+  z-index: -1;
+}
+
+/* Header */
+
+.header {
+  width: 100%;
+  background-color: #181111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #3a2728;
+  padding: 15px 40px;
+}
+.logo {
+  display: flex;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.logo img {
+  width: 30px;
+}
+.logo2 {
+  color: #e60a15;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.navbar a {
+  transition: all 0.2s;
+}
+.navbar .select{
+  background-color: #e60a15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px #e60a1555;
+}
+.navbar a:hover {
+  background-color: #e60a15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px #e60a1555;
+}
+
+/* Main */
+
+.login-card{
+    width: 500px;
+    margin: 100px auto;
+    background-color: #181111;
+    border: 1px solid #3a2728;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.login-card img{
+    height: 150px;
+    width: 125%;
+    object-fit: cover;
+    object-position: 0 -150px;
+}
+.gradient{
+    position: absolute;
+    top: 100px;
+    background: linear-gradient(to bottom, #181111d0, #181111, #181111);
+    width: 100%;
+    height: 50px;
+}
+.login-form{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.login-card h1{
+    text-align: center;
+}
+input{
+    width: 100%;
+    padding: 10px;
+    background: #271B1B;
+    border: 1px solid #553A3B;
+    border-radius: 10px;
+    margin-top: 10px;
+    outline: none;
+    transition: all 0.2s;
+    color: white;
+}
+input::placeholder {
+  color: #BB9B9C;
+}
+input:focus {
+  border: 1px solid #e60a15;
+}
+.option-login{
+  display: flex;
+  justify-content: space-between;
+}
+.remember-login{
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
