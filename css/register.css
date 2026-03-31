@@ -77,7 +77,7 @@ a {
   width: 500px;
   margin: 100px auto;
   background-color: #111827;
-  border: 1px solid #1E293B;
+  border: 1px solid #1e293b;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
@@ -88,29 +88,37 @@ a {
   flex-direction: column;
   gap: 20px;
 }
-.register-form p{
-  color: #94A3B8;
+.register-form h1 {
+  text-align: center;
 }
-.form{
-  color: #CBD5E1;
+.register-form p {
+  color: #94a3b8;
+  text-align: center;
 }
-input {
+.form {
+  color: #cbd5e1;
+}
+.input {
   width: 100%;
   padding: 10px;
-  background: #1E293B80;
+  background: #1e293b80;
   border: 1px solid #334155;
   border-radius: 10px;
   margin-top: 10px;
-  outline: none;
-  transition: all 0.2s;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+input{
+  width: 100%;
+  border: none;
+  background-color: #ffffff00;
+  color: #ffffff;
+  outline: none;
 }
 input::placeholder {
   color: #94A3B8;
-}
-input:focus {
-  border: 1px solid #1f4274;
-  box-shadow: 0 0 10px #1f4274;
 }
 
 .eula {
@@ -118,20 +126,20 @@ input:focus {
   gap: 8px;
 }
 
+.eula p{
+  text-align: left;
+}
+
 input[type="checkbox"] {
   appearance: none;
 
-  margin-top: 0;
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
   border: 1px solid #475569;
-  background-color: #1E293B80;
+  background-color: #1e293b80;
   border-radius: 5px;
   cursor: pointer;
-}
-
-input[type="checkbox"]:focus {
-  border: 1px solid #1f4274;
 }
 
 input[type="checkbox"]:checked {
@@ -143,7 +151,7 @@ input[type="checkbox"]:checked::after {
   color: white;
   font-size: 14px;
   display: flex;
-  margin: -10px -5px;
+  margin: -2px 2px;
 }
 button {
   background-color: #e60a15;
@@ -156,10 +164,10 @@ button {
   cursor: pointer;
   transition: all 0.2s;
 }
-button:hover{
+button:hover {
   padding: 15px;
 }
-.register-form a{
+.register-form a {
   color: #e60a15;
   font-weight: bold;
 }

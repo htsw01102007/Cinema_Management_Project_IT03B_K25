@@ -104,25 +104,29 @@ a {
 .login-card h1 {
   text-align: center;
 }
-input[type="email"],
-input[type="password"] {
+.input {
   width: 100%;
   padding: 10px;
   background: #271b1b;
   border: 1px solid #553a3b;
   border-radius: 10px;
   margin-top: 10px;
-  outline: none;
-  transition: all 0.2s;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+input{
+  width: 100%;
+  border: none;
+  background-color: #ffffff00;
+  color: #ffffff;
+  outline: none;
 }
 input::placeholder {
   color: #bb9b9c;
 }
-input:focus {
-  border: 1px solid #742a2c;
-  box-shadow: 0 0 10px #742a2c;
-}
+
 .option-login {
   display: flex;
   justify-content: space-between;
@@ -133,6 +137,7 @@ input:focus {
   align-items: center;
   gap: 8px;
 }
+
 input[type="checkbox"] {
   appearance: none;
 
@@ -144,9 +149,6 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-input[type="checkbox"]:focus {
-  border: 1px solid #742a2c;
-}
 
 input[type="checkbox"]:checked {
   background-color: #271b1b;
