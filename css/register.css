@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url(../image/image1.png);
+  background-image: url(../image/image2.png);
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   font-family: "Inter", sans-serif;
   color: white;
 }
@@ -23,7 +23,8 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #230f1180, #230f11cc);
+  background: #00000014;
+  backdrop-filter: blur(5px);
   z-index: -1;
 }
 
@@ -72,44 +73,32 @@ a {
 }
 
 /* Main */
-
-.login-card {
+.register-card {
   width: 500px;
   margin: 100px auto;
-  background-color: #181111;
-  border: 1px solid #3a2728;
+  background-color: #111827;
+  border: 1px solid #1E293B;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
-.login-card img {
-  height: 150px;
-  width: 125%;
-  object-fit: cover;
-  object-position: 0 -150px;
-}
-.gradient {
-  position: absolute;
-  top: 100px;
-  background: linear-gradient(to bottom, #181111d0, #181111, #181111);
-  width: 100%;
-  height: 50px;
-}
-.login-form {
+.register-form {
   padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.login-card h1 {
-  text-align: center;
+.register-form p{
+  color: #94A3B8;
 }
-input[type="email"],
-input[type="password"] {
+.form{
+  color: #CBD5E1;
+}
+input {
   width: 100%;
   padding: 10px;
-  background: #271b1b;
-  border: 1px solid #553a3b;
+  background: #1E293B80;
+  border: 1px solid #334155;
   border-radius: 10px;
   margin-top: 10px;
   outline: none;
@@ -117,39 +106,36 @@ input[type="password"] {
   color: white;
 }
 input::placeholder {
-  color: #bb9b9c;
+  color: #94A3B8;
 }
 input:focus {
-  border: 1px solid #742a2c;
-  box-shadow: 0 0 10px #742a2c;
+  border: 1px solid #1f4274;
+  box-shadow: 0 0 10px #1f4274;
 }
-.option-login {
+
+.eula {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.remember-login {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
+
 input[type="checkbox"] {
   appearance: none;
 
+  margin-top: 0;
   width: 18px;
   height: 18px;
-  border: 1px solid #553a3b;
-  background-color: #181111;
+  border: 1px solid #475569;
+  background-color: #1E293B80;
   border-radius: 5px;
   cursor: pointer;
 }
 
 input[type="checkbox"]:focus {
-  border: 1px solid #742a2c;
+  border: 1px solid #1f4274;
 }
 
 input[type="checkbox"]:checked {
-  background-color: #271b1b;
+  background-color: #334155;
 }
 
 input[type="checkbox"]:checked::after {
@@ -157,13 +143,8 @@ input[type="checkbox"]:checked::after {
   color: white;
   font-size: 14px;
   display: flex;
-  margin: -2px 2px;
+  margin: -10px -5px;
 }
-
-.forgot-login a {
-  color: #bb9b9c;
-}
-
 button {
   background-color: #e60a15;
   padding: 10px;
@@ -178,12 +159,7 @@ button {
 button:hover{
   padding: 15px;
 }
-
-.to-register {
-  color: #bb9b9c;
-  text-align: center;
-}
-.to-register a {
+.register-form a{
   color: #e60a15;
   font-weight: bold;
 }
