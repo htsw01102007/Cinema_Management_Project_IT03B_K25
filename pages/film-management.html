@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Eater&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/film-management.js" defer></script>
+    <link rel="stylesheet" href="../css/film-management.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <div class="img-logo">
+          <img src="../image/icon-white.png" alt="" />
+        </div>
+        <span class="logo1">Rikkei</span>
+        <span class="logo2">Cinema</span>
+      </div>
+      <div class="tabs">
+        <div class="tab tab-select">
+          <i class="fa-solid fa-clapperboard"></i>
+          <p>Quản lý phim</p>
+        </div>
+        <div onclick="toTicketManagement()" class="tab">
+          <i class="fa-solid fa-ticket"></i>
+          <p>Quản lý vé</p>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <img src="../image/mduc.jpg" alt="" />
+        <div class="admin-info">
+          <p class="footer-name">Nguyễn Minh Đức</p>
+          <p class="footer-email">nmducdeptrai2701@gmail.com</p>
+        </div>
+        <i
+          class="fa-solid fa-arrow-right-from-bracket"
+          onclick="showLogout()"
+        ></i>
+      </div>
+    </div>
+    <main>
+      <div class="blur"></div>
+      <div id="toast-container"></div>
+      <div class="film-managerment">
+        <div class="film-managerment-top">
+          <div class="film-managerment-title">
+            <h1>Quản lý danh sách phim</h1>
+            <p>Xem, chỉnh sửa và quản lý tất cả phim hiện có trên hệ thống.</p>
+          </div>
+          <div class="film-managerment-edit">
+            <div class="input">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="search" oninput="search()" type="text" placeholder="Tìm tên phim..." />
+            </div>
+            <button onclick="showModal()">+ Thêm phim mới</button>
+          </div>
+        </div>
+        <div class="filter-container">
+          <!-- <div onclick="renderFilter(3)" class="filter select">Tất cả (24)</div>
+          <div onclick="renderFilter(1)" class="filter">Đang chiếu (8)</div>
+          <div onclick="renderFilter(2)" class="filter">Sắp chiếu (5)</div>
+          <div onclick="renderFilter(0)" class="filter">Đã chiếu (11)</div> -->
+        </div>
+        <div class="film-managerment-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ẢNH BÌA</th>
+                <th class="film-managerment-table-info">TÊN PHIM</th>
+                <th>THỂ LOẠI</th>
+                <th>THỜI LƯỢNG</th>
+                <th>NGÀY KHỞI CHIẾU</th>
+                <th>TRẠNG THÁI</th>
+                <th>THAO TÁC</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="7">
+                  <div class="table-footer">
+                    <p id="footer-info">Hiển thị <span>1-5</span> trên <span>24</span> phim</p>
+                    <div class="pagination">
+                      <button id="paginationL"><</button>
+                      <button class="select">1</button>
+                      <button>2</button>
+                      <button>3</button>
+                      <button>...</button>
+                      <button>5</button>
+                      <button id="paginationR">></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div id="logout">
+        <div id="logout-content">
+          <div id="logout-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h2 id="logout-title">Đăng xuất</h2>
+          <p id="logout-info">Bạn có chắc chắn muốn đăng xuất không?</p>
+        </div>
+        <div class="logout-btn">
+          <button id="logout-cancel-btn" onclick="hideLogout()">Hủy</button>
+          <button id="logout-submit-btn" onclick="logoutToLogin()">
+            Đồng ý
+          </button>
+        </div>
+      </div>
+
+      <div class="modal">
+        <div class="modal-top">
+          <h2>Thêm Phim Mới</h2>
+          <i class="fa-solid fa-xmark" onclick="hideModal()"></i>
+        </div>
+        <div class="modal-main">
+          <div class="modal1">
+            <p>Tên phim <span>*</span></p>
+            <input type="text" id="film-title" placeholder="Nhập tên phim" />
+            <p><span id="name-error"></span></p>
+          </div>
+          <div class="modal2">
+            <div>
+              <p>Thể loại <span>*</span></p>
+              <div class="input-with-icon">
+                <select id="film-genres">
+                  <option value="">Chọn thể loại</option>
+                  <option value="Hành động">Hành động</option>
+                  <option value="Phiêu lưu">Phiêu lưu</option>
+                  <option value="Hài">Hài</option>
+                  <option value="Tâm lý">Tâm lý</option>
+                  <option value="Tình cảm">Tình cảm</option>
+                  <option value="Kinh dị">Kinh dị</option>
+                  <option value="Giật gân">Giật gân</option>
+                  <option value="Trinh thám">Trinh thám</option>
+                  <option value="Giả tưởng">Giả tưởng</option>
+                  <option value="Khoa học viễn tưởng">
+                    Khoa học viễn tưởng
+                  </option>
+                  <option value="Tội phạm">Tội phạm</option>
+                  <option value="Chiến tranh">Chiến tranh</option>
+                  <option value="Lịch sử">Lịch sử</option>
+                  <option value="Ca nhạc">Ca nhạc</option>
+                  <option value="Hoạt hình">Hoạt hình</option>
+                  <option value="Tài liệu">Tài liệu</option>
+                  <option value="Gia đình">Gia đình</option>
+                  <option value="Siêu anh hùng">Siêu anh hùng</option>
+                  <option value="Miền viễn Tây">Miền viễn Tây</option>
+                  <option value="Thể thao">Thể thao</option>
+                  <option value="Chính trị">Chính trị</option>
+                </select>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <p><span id="genre-error"></span></p>
+            </div>
+            <div>
+              <p>Thời lượng (phút) <span>*</span></p>
+              <input
+                type="number"
+                id="film-duration"
+                placeholder="Ví dụ: 120"
+              />
+              <p><span id="duration-error"></span></p>
+            </div>
+          </div>
+          <div class="modal2">
+            <div>
+              <p>Ngày khởi chiếu <span>*</span></p>
+              <div class="input-with-icon">
+                <input
+                  type="text"
+                  id="film-releaseDate"
+                  placeholder="dd/mm/yyyy"
+                />
+                <i class="fa-regular fa-calendar"></i>
+              </div>
+              <p><span id="date-error"></span></p>
+            </div>
+            <div>
+              <p>Trạng thái</p>
+              <div class="input-with-icon">
+                <select id="film-status">
+                  <option value="1">Đang chiếu</option>
+                  <option value="2">Sắp chiếu</option>
+                  <option value="0">Đã chiếu</option>
+                </select>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <p><span id="status-error"></span></p>
+            </div>
+          </div>
+          <div class="modal1">
+            <p>Giá vé <span>*</span></p>
+            <input
+              type="number"
+              id="film-ticketPrice"
+              placeholder="Nhập giá vé ...."
+            />
+            <p><span id="price-error"></span></p>
+          </div>
+          <div class="modal1" id="modal-img">
+            <p>URL Ảnh bìa</p>
+            <div class="url-upload-group">
+              <div class="modal-img-input">
+                <i class="fa-solid fa-link"></i>
+                <input
+                  type="text"
+                  id="film-posterUrl"
+                  placeholder="https://example.com/poster.jpg"
+                />
+              </div>
+              <button type="button" onclick="uploadImg()">Tải Ảnh</button>
+            </div>
+            <p><span id="img-error"></span></p>
+          </div>
+          <div class="modal1">
+            <p>Mô tả ngắn</p>
+            <textarea
+              id="film-description"
+              placeholder="Nhập tóm tắt nội dung phim..."
+            ></textarea>
+            <p><span id="description-error"></span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="hideModal()">Hủy</button>
+          <button onclick="addFilm()" id="modal-confirm-btn" class="select">
+            <i class="fa-solid fa-plus"></i> Thêm mới
+          </button>
+        </div>
+      </div>
+
+      <div class="edit-modal">
+        <div class="edit-modal-top">
+          <h2>Cập Nhật Thông Tin Phim</h2>
+          <i class="fa-solid fa-xmark" onclick="hideEditModal()"></i>
+        </div>
+        <div class="edit-modal-main">
+          <div class="edit-modal2">
+            <div>
+              <p>Tên phim <span>*</span></p>
+              <input
+                type="text"
+                id="edit-film-title"
+                placeholder="Nhập tên phim"
+              />
+              <p><span id="edit-name-error"></span></p>
+            </div>
+            <div>
+              <p>Thể loại <span>*</span></p>
+              <div class="edit-input-with-icon">
+                <select id="edit-film-genres">
+                  <option value="">Chọn thể loại</option>
+                  <option value="Hành động">Hành động</option>
+                  <option value="Phiêu lưu">Phiêu lưu</option>
+                  <option value="Hài">Hài</option>
+                  <option value="Tâm lý">Tâm lý</option>
+                  <option value="Tình cảm">Tình cảm</option>
+                  <option value="Kinh dị">Kinh dị</option>
+                  <option value="Giật gân">Giật gân</option>
+                  <option value="Trinh thám">Trinh thám</option>
+                  <option value="Giả tưởng">Giả tưởng</option>
+                  <option value="Khoa học viễn tưởng">
+                    Khoa học viễn tưởng
+                  </option>
+                  <option value="Tội phạm">Tội phạm</option>
+                  <option value="Chiến tranh">Chiến tranh</option>
+                  <option value="Lịch sử">Lịch sử</option>
+                  <option value="Ca nhạc">Ca nhạc</option>
+                  <option value="Hoạt hình">Hoạt hình</option>
+                  <option value="Tài liệu">Tài liệu</option>
+                  <option value="Gia đình">Gia đình</option>
+                  <option value="Siêu anh hùng">Siêu anh hùng</option>
+                  <option value="Miền viễn Tây">Miền viễn Tây</option>
+                  <option value="Thể thao">Thể thao</option>
+                  <option value="Chính trị">Chính trị</option>
+                </select>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <p><span id="edit-genre-error"></span></p>
+            </div>
+          </div>
+          <div class="edit-modal2">
+            <div>
+              <p>Thời lượng (phút) <span>*</span></p>
+              <input
+                type="number"
+                id="edit-film-duration"
+                placeholder="Ví dụ: 120"
+              />
+              <p><span id="edit-duration-error"></span></p>
+            </div>
+            <div>
+              <p>Ngày khởi chiếu <span>*</span></p>
+              <div class="edit-input-with-icon">
+                <input
+                  type="text"
+                  id="edit-film-releaseDate"
+                  placeholder="dd/mm/yyyy"
+                />
+                <i class="fa-regular fa-calendar"></i>
+              </div>
+              <p><span id="edit-date-error"></span></p>
+            </div>
+          </div>
+          <div class="edit-modal1">
+            <p>Mô tả ngắn</p>
+            <textarea
+              id="edit-film-description"
+              placeholder="Nhập tóm tắt nội dung phim..."
+            ></textarea>
+            <p><span id="edit-description-error"></span></p>
+          </div>
+          <div class="edit-modal1">
+            <p>URL Ảnh bìa</p>
+            <div class="edit-modal-img-input">
+              <i class="fa-solid fa-link"></i>
+              <input
+                type="text"
+                id="edit-film-posterUrl"
+                placeholder="https://example.com/poster.jpg"
+              />
+            </div>
+            <p><span id="edit-img-error"></span></p>
+          </div>
+          <div class="edit-modal1">
+            <p>Trạng thái</p>
+            <div class="edit-input-with-icon">
+              <select id="edit-film-status">
+                <option value="1">Đang chiếu</option>
+                <option value="2">Sắp chiếu</option>
+                <option value="0">Đã chiếu</option>
+              </select>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <p><span id="edit-status-error"></span></p>
+          </div>
+          <div class="edit-modal1">
+            <p>Giá vé <span>*</span></p>
+            <input
+              type="number"
+              id="edit-film-ticketPrice"
+              placeholder="Nhập giá vé ...."
+            />
+            <p><span id="edit-price-error"></span></p>
+          </div>
+        </div>
+        <div class="edit-modal-footer">
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #111827;
+  color: #9ca3af;
+  font-family: "Inter", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #d1d5db;
+}
+button{
+    font-family: "Inter", sans-serif;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1F2937;
+  padding: 18px 32px;
+}
+.logo {
+  display: flex;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.logo img {
+  width: 30px;
+}
+.logo1 {
+    color: white;
+}
+.logo2 {
+  color: #e60a15;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.navbar a {
+  color: #d1d5db;
+  transition: all 0.2s;
+}
+.navbar .select {
+  color: white;
+}
+.navbar a:hover {
+  color: white;
+}
+.header button{
+    background-color: #e60a15;
+    border: none;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Main */
+
+.banner {
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+}
+.banner img{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center -350px;
+}
+
+.gra1 {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to top, #111827, #11182740, #11182700);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.gra2 {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to right, #111827, #11182740, #11182700);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.banner-content{
+    position: absolute;
+    bottom: 64px;
+    left: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    width: 30%;
+}
+
+
+
+.banner-content h1 {
+    color: white;
+    font-size: 72px;
+}
+
+.banner-content p {
+    color: #D1D5DB;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.banner-hot p{
+    font-size: 12px;
+    color: #e60a15;
+}
+
+.banner-hot i{
+    font-size: 8px;
+    color: #e60a15;
+}
+
+.banner-hot{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background-color: #E60A151A;
+    border: 1px solid #E60A154D;
+    padding: 0px 12px;
+    border-radius: 20px;
+}
+
+.banner-btn {
+    display: flex;
+    gap: 16px;
+}
+
+.banner-btn button {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    color: white;
+    background-color: #00000066;
+    border: 1px solid #4B5563;
+    font-size: 16px;
+    padding: 12px 32px;
+    border-radius: 5px;
+}
+
+.banner-btn i{
+    font-size: 20px;
+}
+
+.banner-btn .ticket{
+    background-color: #e60a15;
+    border: 1px solid #e60a15;
+}
+
+.sec1{
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sec1 h1{
+    color: white;
+}
+
+.sec1-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sec1-header a {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    color: #e60a15;
+}
+
+.film-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
+}
+
+.film-card{
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #1F2937;
+    border: 1px solid #1F2937;
+}
+
+.film-card img{
+    height: 700px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.film-card-content{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.film-card-content h3{
+    color: white;
+}
+
+.film-card-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.film-card-content button{
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #e60a15;
+    background-color: #E60A1533;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sec2{
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background-color: #151D2E;
+    border: 1px solid #1F2937;
+    text-align: center;
+}
+
+.sec2 h1{
+    color: white;
+}
+
+.offer-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+}
+
+.offer-card{
+    padding: 32px;
+    background-color: #1F2937;
+    border: 1px solid #374151;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.offer-icon{
+    height: 56px;
+    width: 56px;
+    background-color: #E60A151A;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.offer-icon img{
+    width: 30px;
+}
+
+.offer-card h3{
+    color: white;
+}
+
+.offer-card a{
+    color: #e60a15;
+    font-weight: bold;
+}
+
+.sec3{
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sec3 h1{
+    color: white;
+    text-align: center;
+}
+
+.reason-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+.reason-card{
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #1F2937;
+    border-radius: 5px;
+}
+
+.reason-card img{
+    width: 30px;
+}
+
+.reason-card h3{
+    color: white;
+}
+
+.sec4 {
+    padding: 64px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F2937;
+}
+
+.member-content{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.member-content h1{
+    color: white;
+}
+.member-content p{
+    font-size: 20px;
+}
+
+.member-email{
+    display: flex;
+    gap: 5px;
+}
+.member-email button{
+    height: 40px;
+    padding: 0 16px;
+    background-color: #e60a15;
+    border: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.member-email input{
+    padding: 0 16px;
+    outline: none;
+    background-color: #111827;
+    border: 1px solid #374151;
+    border-radius: 5px;
+    width: 300px;
+}
+.member-email input::placeholder{
+    color: #374151;
+}
+
+/* Footer */
+
+footer{
+    margin-top: 10px;
+    padding: 32px;
+    border: 1px solid #1F2937;
+}
+.footer-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid #1F2937;
+}
+.footer-right{
+    display: flex;
+    gap: 32px;
+}
+.footer-right a{
+    color: #9CA3AF;
+}
+
+.footer-left{
+    font-size: 20px;
+}
+.footer-bottom{
+    padding: 32px 0;
+    text-align: center;
+}

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Eater&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/index.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="logo">
+          <img src="../image/icon.png" alt="" />
+          <span class="logo1">Rikkei</span>
+          <span class="logo2">Cinema</span>
+        </div>
+        <div class="navbar">
+          <a href="" class="select">Trang Chủ</a>
+          <a href="">Phim</a>
+          <a href="">Rạp chiếu</a>
+        </div>
+        <button onclick="reglog()">Đăng nhập/Đăng ký</button>
+      </div>
+    </header>
+    <main>
+      <div class="banner">
+        <img src="../image/banner.jpg" alt="" />
+        <div class="gra1"></div>
+        <div class="gra2"></div>
+        <div class="banner-content">
+          <div class="banner-hot">
+            <i class="fa-solid fa-circle"></i>
+            <p>Đang Thịnh Hành</p>
+          </div>
+          <h1>Dune: Hành Tinh Cát</h1>
+          <p>
+            Câu chuyện về cuộc hành trình của Paul Atreides, một chàng trai trẻ
+            tài năng và rực rỡ, sinh ra với số phận vĩ đại vượt quá sự hiểu biết
+            của mình.
+          </p>
+          <div class="banner-btn">
+            <button class="ticket">
+              <i class="fa-solid fa-ticket"></i> Đặt Vé Ngay
+            </button>
+            <button>
+              <i class="fa-regular fa-circle-play"></i> Xem Trailer
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="sec1">
+        <div class="sec1-header">
+          <h1>Phim Đang Chiếu</h1>
+          <a href="">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="film-container">
+        </div>
+      </div>
+      <div class="sec2">
+        <h1>Ưu đãi đặc biệt</h1>
+        <p>
+          Khám phá các chương trình khuyến mãi và ưu đãi hấp dẫn dành riêng cho
+          bạn.
+        </p>
+        <div class="offer-container">
+          <div class="offer-card">
+            <div class="offer-icon">
+              <img src="../image/offer1.png" alt="" />
+            </div>
+            <h3>Giảm 20% cho sinh viên</h3>
+            <p>
+              Áp dụng cho tất cả các suất chiếu 2D từ thứ 2 đến thứ 5 hàng tuần
+              khi mang theo thẻ sinh viên.
+            </p>
+            <a href="">Xem chi tiết</a>
+          </div>
+          <div class="offer-card">
+            <div class="offer-icon">
+              <img src="../image/offer2.png" alt="" />
+            </div>
+            <h3>Combo Bắp Nước Tiết Kiệm</h3>
+            <p>
+              Tiết kiệm đến 30% khi mua vé online kèm combo bắp nước Sweet
+              Combo.
+            </p>
+            <a href="">Xem chi tiết</a>
+          </div>
+          <div class="offer-card">
+            <div class="offer-icon">
+              <img src="../image/offer3.png" alt="" />
+            </div>
+            <h3>Thẻ Thành Viên VIP</h3>
+            <p>
+              Tích điểm đổi quà, miễn phí nâng cấp bắp nước và vé mời xem phim
+              định kỳ.
+            </p>
+            <a href="">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+      <div class="sec3">
+        <h1>Tại sao chọn RikkeiEdu?</h1>
+        <div class="reason-container">
+          <div class="reason-card">
+            <img src="../image/reason1.png" alt="" />
+            <h3>Trải nghiệm đỉnh cao</h3>
+            <p>
+              Hệ thống âm thanh Dolby Atmos và màn hình IMAX mang đến trải
+              nghiệm điện ảnh sống động nhất.
+            </p>
+          </div>
+          <div class="reason-card">
+            <img src="../image/reason2.png" alt="" />
+            <h3>Giá vé hợp lý</h3>
+            <p>
+              Cam kết giá vé tốt nhất cho học sinh, sinh viên và thành viên thân
+              thiết với nhiều ưu đãi.
+            </p>
+          </div>
+          <div class="reason-card">
+            <img src="../image/reason3.png" alt="" />
+            <h3>Đặt vé nhanh chóng</h3>
+            <p>
+              Hệ thống đặt vé online tiện lợi, chọn ghế dễ dàng và thanh toán an
+              toàn chỉ trong vài bước.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="sec4">
+        <div class="member-content">
+          <h1>Đăng ký thành viên CineEdu</h1>
+          <p>Nhận ưu đãi vé xem phim và bắp nước hàng tuần.</p>
+        </div>
+        <div class="member-email">
+          <input type="text" placeholder="Email của bạn">
+          <button>Đăng ký</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-top">
+        <div class="footer-right">
+          <a href="">Liên hệ</a>
+          <a href="">Điều khoản</a>
+          <a href="">Tuyển dụng</a>
+          <a href="">Về chúng tôi</a>
+        </div>
+        <div class="footer-left">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 RikkeiEdu. Tất cả quyền được bảo mật .
+      </div>
+    </footer>
+  </body>
+</html>

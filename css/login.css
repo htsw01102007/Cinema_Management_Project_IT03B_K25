@@ -54,21 +54,25 @@ a {
   display: flex;
   align-items: center;
   gap: 30px;
+  color: #CBD5E1;
 }
 .navbar a {
   transition: all 0.2s;
+  color: #CBD5E1;
 }
 .navbar .select {
   background-color: #e60a15;
   padding: 5px 10px;
   border-radius: 5px;
   box-shadow: 0 5px 5px #e60a1555;
+  color: white;
 }
 .navbar a:hover {
   background-color: #e60a15;
   padding: 5px 10px;
   border-radius: 5px;
   box-shadow: 0 5px 5px #e60a1555;
+  color: white;
 }
 
 /* Main */
@@ -83,7 +87,7 @@ a {
   position: relative;
 }
 .login-card img {
-  height: 150px;
+  height: 130px;
   width: 125%;
   object-fit: cover;
   object-position: 0 -150px;
@@ -91,9 +95,9 @@ a {
 .gradient {
   position: absolute;
   top: 100px;
-  background: linear-gradient(to bottom, #181111d0, #181111, #181111);
+  background: linear-gradient(to bottom, #181111d0, #181111);
   width: 100%;
-  height: 50px;
+  height: 30px;
 }
 .login-form {
   padding: 30px;
@@ -103,25 +107,28 @@ a {
 }
 .login-card h1 {
   text-align: center;
+  width: 70%;
+  margin: auto;
 }
 .input {
   width: 100%;
-  padding: 10px;
+  padding: 14.5px;
   background: #271b1b;
   border: 1px solid #553a3b;
   border-radius: 10px;
-  margin-top: 10px;
+  margin: 10px 0 10px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-input{
+input {
   width: 100%;
   border: none;
   background-color: #ffffff00;
   color: #ffffff;
   outline: none;
+  font-size: 16px;
 }
 input::placeholder {
   color: #bb9b9c;
@@ -148,7 +155,6 @@ input[type="checkbox"] {
   border-radius: 5px;
   cursor: pointer;
 }
-
 
 input[type="checkbox"]:checked {
   background-color: #271b1b;
@@ -177,8 +183,12 @@ button {
   cursor: pointer;
   transition: all 0.2s;
 }
-button:hover{
+button:hover {
   padding: 15px;
+}
+
+.error {
+  color: #e60a15;
 }
 
 .to-register {
@@ -188,4 +198,82 @@ button:hover{
 .to-register a {
   color: #e60a15;
   font-weight: bold;
+}
+
+/* Toast */
+
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.toast {
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #1F2937;
+  border-left: 4px solid #11d411;
+  width: 360px;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.4s cubic-bezier(0, 0, 1, 1.5) forwards;
+}
+.hide {
+  animation: slideOut 0.4s cubic-bezier(0, 0, 1, 1.5) forwards;
+}
+.toast::after{
+  content: "✖";
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  color: #64748B;
+}
+.toast h4 {
+  font-size: 14px;
+}
+.toast p {
+  font-size: 14px;
+  color: #CBD5E1;
+}
+.toast i {
+  font-size: 20px;
+}
+.toast.success {
+  border-left: 4px solid #11d411;
+}
+.toast.error {
+ border-left: 4px solid #f04343;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%) scale(0);
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    margin: 10px 0;
+    padding: 10px;
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0) scale(1);
+    margin: 10px 0;
+    padding: 10px;
+    opacity: 1;
+  }
+  to {
+    transform: translateX(120%) scale(0);
+    margin: 0;
+    padding: 0px;
+    opacity: 0;
+  }
 }

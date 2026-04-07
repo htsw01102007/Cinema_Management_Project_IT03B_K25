@@ -25,12 +25,12 @@
     <header>
       <div class="header">
         <div class="logo">
-          <img src="../image/Icon.png" alt="" />
+          <img src="../image/icon.png" alt="" />
           <span class="logo1">Rikkei</span>
           <span class="logo2">Cinema</span>
         </div>
         <div class="navbar">
-          <a href="">Trang Chủ</a>
+          <a href="../index.html">Trang Chủ</a>
           <a href="">Thông Tin</a>
           <a href="">Liên Hệ</a>
           <a class="select" href="">Đăng Nhập</a>
@@ -42,39 +42,42 @@
         <div class="register-form">
           <h1>Tạo tài khoản mới</h1>
           <p>Đăng ký để đặt vé xem phim ngay hôm nay</p>
-          <div class="register-name">
+          <div>
             <span class="form">Họ và tên</span><br />
             <div class="input">
-            <input type="text" placeholder="Nguyễn Văn A" />
-            <i class="fa-regular fa-user" style="color: #94A3B8;"></i>
+            <input id="register-name" type="text" placeholder="Nguyễn Văn A" />
             </div>
+            <p class="error" id="register-name-error"></p>
           </div>
-          <div class="register-email">
+          <div>
             <span class="form">Email</span><br />
             <div class="input">
-            <input type="text" placeholder="email@example.com" />
-            <i class="fa-regular fa-envelope" style="color: #94A3B8;"></i>
+            <input id="register-email" type="text" placeholder="email@example.com" />
             </div>
+            <p class="error" id="register-email-error"></p>
           </div>
-          <div class="register-password">
+          <div>
             <span class="form">Mật khẩu</span><br />
             <div class="input">
-            <input type="text" placeholder="******" />
-            <i class="fa-regular fa-eye" style="color: #94A3B8;"></i>
+            <input id="register-password" type="password" placeholder="********" />
+            <i id="eye-password" class="fa-regular fa-eye-slash" onclick="hidePassword()" style="color: #94A3B8;"></i>
             </div>
+            <p class="error" id="register-password-error"></p>
           </div>
-          <div class="register-confirm-password">
+          <div>
             <span class="form">Xác nhận mật khẩu</span><br />
             <div class="input">
-            <input type="text" placeholder="******" />
-            <i class="fa-regular fa-eye" style="color: #94A3B8;"></i>
+            <input id="register-confirm-password" type="password" placeholder="********" />
+            <i id="eye-confirm-password" class="fa-regular fa-eye-slash" onclick="hideConfirmPassword()" style="color: #94A3B8;"></i>
             </div>
+            <p class="error" id="register-confirm-password-error"></p>
           </div>
           <div class="eula">
-              <input type="checkbox" name="" id="eula" />
+              <input type="checkbox" name="" value="true" id="eula" />
               <p>Tôi đồng ý với <a href="">điều khoản sử dụng</a> và chính sách bảo mật của CineEdu.</p>
           </div>
-          <button>
+          <p class="error" id="eula-error"></p>
+          <button onclick="register()">
             Đăng ký
             <i
               class="fa-solid fa-arrow-right"
@@ -84,6 +87,8 @@
           <p class="to-login">Đã có tài khoản? <a href="../pages/login.html">Đăng nhập ngay</a></p>
         </div>
       </div>
-    </main>
+      <footer>
+        <p class="footer">© 2026 RikkeiEdu. Tất cả quyền được bảo mật .</p>
+      </footer>
   </body>
 </html>

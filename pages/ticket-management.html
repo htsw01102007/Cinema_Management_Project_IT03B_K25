@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Eater&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/ticket-management.js" defer></script>
+    <link rel="stylesheet" href="../css/ticket-management.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <div class="img-logo">
+          <img src="../image/icon-white.png" alt="" />
+        </div>
+        <span class="logo1">Rikkei</span>
+        <span class="logo2">Cinema</span>
+      </div>
+      <div class="tabs">
+        <div onclick="toFilmManagement()" class="tab">
+          <i class="fa-solid fa-clapperboard"></i>
+          <p>Quản lý phim</p>
+        </div>
+        <div class="tab tab-select">
+          <i class="fa-solid fa-ticket"></i>
+          <p>Quản lý vé</p>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <img src="../image/mduc.jpg" alt="" />
+        <div class="admin-info">
+          <p class="footer-name">Nguyễn Minh Đức</p>
+          <p class="footer-email">nmducdeptrai2701@gmail.com</p>
+        </div>
+        <i
+          class="fa-solid fa-arrow-right-from-bracket"
+          onclick="showLogout()"
+        ></i>
+      </div>
+    </div>
+  </body>
+</html>
