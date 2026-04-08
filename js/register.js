@@ -98,9 +98,35 @@ function register() {
         return;
     }
 
-    localStorage.setItem("registered", JSON.stringify("true"))
-    window.location.replace("../pages/login.html")
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Kiểm tra email đã tồn tại chưa
+    let isEmailExist = users.some(user => user.email === registerEmail.value.trim());
+    if (isEmailExist) {
+        registerEmailError.textContent = "*Email này đã được đăng ký. Vui lòng sử dụng email khác!";
+        return;
+    }
+
+    // Tạo user mới
+    let newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+    let newUser = {
+        id: newId,
+        fullName: registerName.value.trim(),
+        email: registerEmail.value.trim(),
+        password: registerPassword.value, // Thực tế nên mã hóa, nhưng ở đây demo ta lưu plain text
+        role: "user", // Mặc định đăng ký mới là user
+        createdAt: new Date().toISOString(),
+        isActive: true
+    };
+
+    // Đẩy user mới vào mảng và lưu lại lên local
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // Đánh dấu để trang Login hiển thị Toast thành công
+    localStorage.setItem("registered", JSON.stringify(true));
+    
+    // Chuyển hướng sang trang đăng nhập
+    window.location.replace("../pages/login.html");
 }
-
-
 

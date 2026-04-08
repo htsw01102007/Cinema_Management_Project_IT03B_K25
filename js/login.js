@@ -83,17 +83,44 @@ function hidePassword() {
 }
 
 function login() {
-  resetErrorLogin();
+    resetErrorLogin();
 
-  if (
-    loginEmail.value.trim() === "" ||
-    !validateEmail(loginEmail.value) ||
-    loginPassword.value.trim() === "" ||
-    !validatePassword(loginPassword.value)
-  ) {
-    loginError.textContent = "*Email hoặc mật khẩu không hợp lệ.";
-    return;
-  }
+    if (
+        loginEmail.value.trim() === "" ||
+        !validateEmail(loginEmail.value) ||
+        loginPassword.value.trim() === ""
+    ) {
+        loginError.textContent = "*Vui lòng nhập đầy đủ Email và Mật khẩu hợp lệ.";
+        return;
+    }
 
-  window.location.replace("../pages/film-management.html");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Tìm user có email và password khớp với dữ liệu nhập vào
+    let foundUser = users.find(user => 
+        user.email === loginEmail.value.trim() && 
+        user.password === loginPassword.value
+    );
+
+    // Nếu không tìm thấy
+    if (!foundUser) {
+        loginError.textContent = "*Email hoặc mật khẩu không chính xác.";
+        return;
+    }
+
+    // Kiểm tra xem tài khoản có bị khóa không (isActive = false)
+    if (!foundUser.isActive) {
+        loginError.textContent = "*Tài khoản của bạn đang bị khóa. Vui lòng liên hệ Admin.";
+        return;
+    }
+
+    // Nếu thành công: Lưu phiên đăng nhập (session)
+    localStorage.setItem("currentUser", JSON.stringify(foundUser));
+
+    // Điều hướng dựa vào Role (Quyền)
+    if (foundUser.role === "admin") {
+        window.location.replace("../pages/film-management.html");
+    } else {
+        window.location.replace("../pages/index.html"); // Trở về trang chủ cho user thường
+    }
 }

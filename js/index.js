@@ -3,7 +3,7 @@
 let movies = JSON.parse(localStorage.getItem("movies"));
 
 function reglog() {
-    window.location.replace("./pages/register.html");
+    window.location.replace("../pages/register.html");
 }
 
 function renderHomeFilms(list) {

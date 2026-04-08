@@ -137,6 +137,7 @@ body {
   object-fit: cover;
   object-position: center;
   flex-shrink: 0;
+  border: 2px solid #e60a15;
 }
 
 /* Main */

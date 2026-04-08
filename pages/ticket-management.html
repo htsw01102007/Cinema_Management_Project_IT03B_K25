@@ -20,7 +20,7 @@
     <script src="../js/ticket-management.js" defer></script>
     <link rel="stylesheet" href="../css/ticket-management.css" />
   </head>
-  <body>
+<body>
     <div class="sidebar">
       <div class="logo">
         <div class="img-logo">
@@ -51,5 +51,232 @@
         ></i>
       </div>
     </div>
+    
+    <main>
+      <div class="blur" id="blur-overlay"></div>
+      <div id="toast-container"></div>
+      
+      <div class="ticket-management">
+        <div class="ticket-management-top">
+            <h1>Quản lý vé đã đặt</h1>  
+          <div class="ticket-management-top-content">
+            <div class="search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="search-ticket-input" oninput="searchTickets()" type="text" placeholder="Tìm kiếm mã vé, tên khách..."/>
+            </div>
+            <i class="fa-regular fa-bell"></i>
+          </div>
+        </div>
+        
+        <div class="ticket-management-main">
+          <div class="stats-container">
+            <div class="status-card">
+              <img src="../image/stat1.png" alt="" />
+              <div class="status-card-content">
+                <p>Tổng vé hôm nay</p>
+                <h1 id="stat-total-tickets">0</h1>
+                <p><span class="green">+12% so với hôm qua</span></p>
+              </div>
+            </div>
+            <div class="status-card">
+              <img src="../image/stat2.png" alt="" />
+              <div class="status-card-content">
+                <p>Doanh thu hôm nay</p>
+                <h1><span id="stat-total-revenue">0</span><span class="vnd">đ</span></h1>
+                <p><span class="green">+5% so với mục tiêu</span></p>
+              </div>
+            </div>
+            <div class="status-card">
+              <img src="../image/stat3.png" alt="" />
+              <div class="status-card-content">
+                <p>Vé chờ xác nhận</p>
+                <h1 id="stat-pending-tickets">0</h1>
+                <p>
+                  <span class="yellow"
+                    ><i class="fa-solid fa-triangle-exclamation"></i> Cần xử lý
+                    ngay</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn-add-ticket" onclick="showAddModal()">
+            <i class="fa-solid fa-plus"></i> Đặt vé
+          </button>
+          
+          <div class="ticket-managerment-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>MÃ VÉ</th>
+                  <th>KHÁCH HÀNG</th>
+                  <th>PHIM</th>
+                  <th>SUẤT CHIẾU</th>
+                  <th>GHẾ</th>
+                  <th>TỔNG TIỀN</th>
+                  <th>TRẠNG THÁI</th>
+                  <th>THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody id="ticket-tbody">
+                </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <div class="table-footer">
+                      <p id="footer-info">Đang xem <span>0</span> đến <span>0</span> trong số <span>0</span> kết quả</p>
+                      <div class="pagination" id="ticket-pagination">
+                        </div>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="add-ticket-modal">
+        <div class="modal-top">
+          <h2>Thêm Mới Đặt Vé</h2>
+          <i class="fa-solid fa-xmark" onclick="hideAddModal()"></i>
+        </div>
+        <div class="modal-main">
+          <div class="form-group">
+            <label>Chọn khách hàng <span>*</span></label>
+            <input type="text" id="add-customer" placeholder="Nhập tên khách hàng..." />
+            <span class="error-msg" id="add-customer-err"></span>
+          </div>
+          <div class="modal-grid">
+            <div class="form-group">
+              <label>Chọn phim <span>*</span></label>
+              <select id="add-movie" onchange="calculateAddTotal()">
+                <option value="">Chọn phim đang chiếu...</option>
+              </select>
+              <span class="error-msg" id="add-movie-err"></span>
+            </div>
+            <div class="form-group">
+              <label>Chọn suất chiếu <span>*</span></label>
+              <select id="add-showtime">
+                <option value="">Chọn Suất</option>
+                <option value="10:00">10:00</option>
+                <option value="13:30">13:30</option>
+                <option value="19:00">19:00</option>
+                <option value="21:45">21:45</option>
+              </select>
+              <span class="error-msg" id="add-showtime-err"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Chọn ghế <span>*</span></label>
+            <input type="text" id="add-seats" placeholder="Ví dụ: F5, F6" oninput="calculateAddTotal()" />
+            <p class="hint">Phân cách các ghế bằng dấu phẩy</p>
+            <span class="error-msg" id="add-seats-err"></span>
+          </div>
+          <div class="modal-grid">
+            <div class="form-group">
+              <label>Phương thức thanh toán</label>
+              <select id="add-payment-method">
+                <option value="0">Tiền mặt</option>
+                <option value="1">Chuyển khoản</option>
+                <option value="2">Thẻ ngân hàng</option>
+                <option value="3">Ví điện tử</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Trạng thái thanh toán</label>
+              <select id="add-payment-status">
+                <option value="true">Đã thanh toán</option>
+                <option value="false">Chờ xử lý</option>
+              </select>
+            </div>
+          </div>
+          <div class="total-box">
+            <div class="total-icon"><i class="fa-solid fa-receipt"></i></div>
+            <div class="total-content">
+              <p>TỔNG TIỀN DỰ KIẾN</p>
+              <h2 id="add-total-price">0 đ</h2>
+            </div>
+            <div class="total-info">
+              <p id="add-seat-count-info">0 vé x 0 đ</p>
+              <p>Đã bao gồm VAT</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="hideAddModal()">Hủy</button>
+          <button class="btn-submit" onclick="submitAddTicket()"><i class="fa-solid fa-check"></i> Xác nhận đặt vé</button>
+        </div>
+      </div>
+
+      <div class="modal" id="edit-ticket-modal">
+        <div class="modal-top">
+          <h2 id="edit-modal-title">Cập Nhật Thông Tin Vé</h2>
+          <i class="fa-solid fa-xmark" onclick="hideEditModal()"></i>
+        </div>
+        <div class="modal-main">
+            <input type="hidden" id="edit-ticket-id">
+          <div class="form-group">
+            <label>Khách hàng</label>
+            <input type="text" id="edit-customer" readonly class="readonly-input"/>
+          </div>
+          <div class="modal-grid">
+            <div class="form-group">
+              <label>Phim</label>
+              <input type="text" id="edit-movie" readonly class="readonly-input"/>
+            </div>
+            <div class="form-group">
+              <label>Suất chiếu</label>
+              <input type="text" id="edit-showtime" readonly class="readonly-input"/>
+            </div>
+          </div>
+          <div class="modal-grid">
+            <div class="form-group">
+              <label>Vị trí ghế <span>*</span></label>
+              <input type="text" id="edit-seats" oninput="calculateEditTotal()"/>
+              <span class="error-msg" id="edit-seats-err"></span>
+            </div>
+            <div class="form-group">
+              <label>Trạng thái thanh toán</label>
+              <select id="edit-payment-status">
+                <option value="true">Đã thanh toán</option>
+                <option value="false">Chờ xử lý</option>
+                <option value="cancel">Đã hủy</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ghi chú</label>
+            <textarea id="edit-note" placeholder="Nhập ghi chú của admin..."></textarea>
+          </div>
+          <div class="total-box edit-total-box">
+            <p>Tổng số ghế: <span id="edit-seat-count">0</span></p>
+            <div style="text-align: right;">
+                <p class="hint">Tổng tiền thanh toán</p>
+                <h2 id="edit-total-price">0đ</h2>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="hideEditModal()">Hủy</button>
+          <button class="btn-submit" onclick="submitEditTicket()">Lưu thay đổi</button>
+        </div>
+      </div>
+
+      <div class="modal" id="delete-ticket-modal" style="width: 400px; text-align: center;">
+        <div class="modal-main" style="align-items: center;">
+            <div class="delete-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h2>Xác nhận hủy vé</h2>
+            <p>Bạn có chắc chắn muốn hủy và xóa vé mã <strong id="delete-ticket-code"></strong> này không?</p>
+            <p class="hint">Hành động này sẽ giải phóng ghế ngồi và không thể hoàn tác.</p>
+        </div>
+        <div class="modal-footer" style="justify-content: center;">
+            <button class="btn-cancel" onclick="hideDeleteModal()">Đóng</button>
+            <button class="btn-submit" onclick="confirmDeleteTicket()">Xác nhận hủy</button>
+        </div>
+      </div>
+
+    </main>
   </body>
 </html>

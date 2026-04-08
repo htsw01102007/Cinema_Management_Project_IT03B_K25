@@ -59,7 +59,9 @@ function showLogout() {
   document.getElementById("logout-info").textContent =
     "Bạn có chắc chắn muốn đăng xuất không?";
   document.getElementById("logout-submit-btn").textContent = "Đồng ý";
-  document.getElementById("logout-submit-btn").onclick = "logoutToLogin()";
+  document.getElementById("logout-submit-btn").onclick = function () {
+    logoutToLogin();
+  };
 }
 
 function hideLogout() {
